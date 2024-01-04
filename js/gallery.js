@@ -70,6 +70,8 @@ container.innerHTML = createMarkup(images);
 container.addEventListener("click", handleImageClick);
 
 function handleImageClick(event) {
+    event.preventDefault();
+
     if (event.target === event.curretTarget) {
         return;
     }
