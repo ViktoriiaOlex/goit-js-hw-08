@@ -65,8 +65,13 @@ const images = [
 ];
   
 const container = document.querySelector(".gallery");
-
 container.innerHTML = createMarkup(images);
+
+container.addEventListener("click", handleImageClick);
+
+function handleImageClick(event) {
+    console.log(event.target);
+}
 
 function createMarkup(arr) {
     return arr.map(({ preview, original, description }) => `
