@@ -70,21 +70,50 @@ container.innerHTML = createMarkup(images);
 container.addEventListener("click", handleImageClick);
 
 function handleImageClick(event) {
-    console.log(event.target);
+    if (event.target === event.curretTarget) {
+        return;
+    }
+    const original = event.target.dataset.source;
+    const description = event.target.dataset.description;
+
+
+    const instance = basicLightbox.create(
+        `<div class="modal">
+            <img class="modal-img"
+            src= "${original}"
+            alt="${description}"
+            />
+        </div>`,
+{
+            onShow: () => {
+            document.addEventListener('keydown', onModalClose);
+            },
+            onClose: () => {
+            document.removeEventListener('keydown', onModalClose);
+            },
+        },)
+    instance.show();
+    
+    function onModalClose(event) {
+        if (event.code === 'Escape') {
+        instance.close();
+        }
+    }
 }
 
 function createMarkup(arr) {
-    return arr.map(({ preview, original, description }) => `
-    <li class="gallery-item">
+    return arr.map(({ preview, original, description }) =>
+    `<li class="gallery-item">
     <a class="gallery-link" href="${original}">
     <img
     class="gallery-image"
     src="${preview}"
     data-source="${original}"
     alt="${description}"
-  />
+/>
 </a>
-    </li>,
-    `).join("");
+    </li>`,
+    )
+    .join("");
 }
 

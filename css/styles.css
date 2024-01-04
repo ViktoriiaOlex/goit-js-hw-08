@@ -22,12 +22,12 @@ display: flex;
 width: 1440px;
 height: 696px;
 padding: 24px 156px;
-justify-content: center;
-align-items: flex-start;
+justify-content: space-around;
+/* align-items: flex-start; */
 flex-wrap: wrap;
-row-gap: 24px;
+/* row-gap: 24px; */
 }
-  
+
 .gallery-item {
 flex-basis: calc((100% - 24px) / 3);
 }
