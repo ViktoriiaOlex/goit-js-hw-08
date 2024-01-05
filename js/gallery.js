@@ -72,7 +72,7 @@ container.addEventListener("click", handleImageClick);
 function handleImageClick(event) {
     event.preventDefault();
 
-    if (event.target === event.curretTarget) {
+    if (event.target === event.currentTarget) {
         return;
     }
     const original = event.target.dataset.source;
@@ -98,7 +98,7 @@ function handleImageClick(event) {
     
     function onModalClose(event) {
         if (event.code === 'Escape') {
-        instance.close();
+            instance.close();
         }
     }
 }
